@@ -4,83 +4,69 @@
 
 int stack[MAX_SIZE],top=-1;
 
-
-int isFULL()
-{
+int isFull(){
 	//returns 1 if stack is full else returns -1
-	if (top==1)
-{
-	return 1;
-}
-else 
-{
-	return -1;
-}
-}
-	
-
-int isEmpty()
-{
-	//returns 1 if stack is full else returns -1
-}
-if (top==-1)
-{
-	return -1;
-}
-else 
-{
-	return 1;
+	return (top==MAX_SIZE-1)?1:-1;
 }
 
-int peek()
-{
-	//return element at the top of the stack
-	return stack[top]
+int isEmpty(){
+//returns 1 if stack is empty else returns -1
 }
-void push (int e){
-	//inserts an element into stack
-	if (!isFull)
+
+int peek(){
+//return element at the top of stack
+}
+
+void push(int e){
+//inserts an element into stack
+	if(whether the stack is not full)
 	{
-		top++;
-		stack[top]=e;
-		printf("inserted sucessfully");
+		//increment the top
+		//set top of stack equal e
+		//msg element e successfully inserted
 	}
-	else
-	{
-		printf("stack overflow");
-	
+	else{
+		//msg stack overflow
+	}
 }
 
-void pop (int e){
-	//remove an element from st
+void pop(){
+//deletes an element from top of stack
 	int d;
-	if (!isEmpty)
+	if(whether the stack is not empty)
 	{
-		d=stack[top];
-       top--;		
-       printf("element d is sucessfully deleted");
-   }
-   else
-   {
-	   printf("stack underflow");
-   }
+		//d=top of stack
+		//decrement the top
+		//msg element d successfully deleted
+	}
+	else{
+		//msg stack underflow
+	}
 }
+
 int main(){
 	int choice,e;
 	do
 	{
-		display menu 1.peek 2.push 3.pop 4.exit
+		//display menu 1.peek 2.push 3.pop 4.exit
 		printf("enter your choice");
-		take input in choice variable
+		//take input in choice variable
 		switch(choice){
 			case 1:
-			//call peek fnctn
-			break;
-			till
+				//call peek function
+				break;
+			case 2:
+				//call push function
+				break;
+			case 3:
+				//call pop function
+				break;
 			case 4:
-			//exit
-			return 0;
-			
+				//call exit(0) function or return 0
+				break;
+			default:
+				//invalid choice				
+		}
 	}while(1);
-	return=0;
-	
+	return 0;
+}
