@@ -6,11 +6,12 @@ int stack[MAX_SIZE],top=-1;
 
 int isFull(){
 	//returns 1 if stack is full else returns -1
-	return (top==MAX_SIZE-1)?1:-1;
+	return top==MAX_SIZE-1;
 }
 
 int isEmpty(){
 //returns 1 if stack is empty else returns -1
+return top==-1;
 }
 
 int peek(){
@@ -48,20 +49,27 @@ int main(){
 	int choice,e;
 	do
 	{
-		//display menu 1.peek 2.push 3.pop 4.exit
+		printf("\nmenu 1.peek 2.push 3.pop 4.exit
 		printf("enter your choice");
+		scanf("%d",&choice);
 		//take input in choice variable
 		switch(choice){
 			case 1:
-				//call peek function
+				e=peek();//call peek function
+				printf("\nELEMENT AT THE TOP OF STACK IS:%d",e);
 				break;
 			case 2:
+			printf("\nENTER THE ELEMENT TO BE INSERTED:");
+			scanf("%d",&e);
+			push(e);
 				//call push function
 				break;
 			case 3:
+			pop();
 				//call pop function
 				break;
 			case 4:
+			exit(0);
 				//call exit(0) function or return 0
 				break;
 			default:
