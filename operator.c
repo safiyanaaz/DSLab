@@ -76,5 +76,7 @@ int priority(char c)
 void push (stack *s,char opr)
 {
 	s->top++;
-	s->a[
+	s->a[s->top]=opr;
+}
+
 	
