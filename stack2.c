@@ -26,26 +26,26 @@ void push(int e){
 	if(!isFull())
 	{
 		top++;//increment the top
-		stack[top]=e;//set top of stack equal e
-		printf("\nYour element %d is successfully inserted",e);//msg element e successfully inserted
+		stack[top]=e;
+		printf("\nYour element %d is successfully inserted",e);
 	}
 	else{
-		//msg stack overflow
+	
 		printf("\nElement cannot be inserted. Stack Overflow!");
 	}
 }
 
 void pop(){
-//deletes an element from top of stack
+
 	int d;
 	if(!isEmpty())
 	{
-		d=stack[top];//d=top of stack
-		top--;//decrement the top
-		printf("\nYour element %d is successfully deleted",d);//msg element d successfully deleted
+		d=stack[top];
+		top--;
+		printf("\nYour element %d is successfully deleted",d);
 	}
 	else{
-		printf("\nElement cannot be deleted. Stack Underflow!");//msg stack underflow
+		printf("\nElement cannot be deleted. Stack Underflow!");
 	}
 }
 
@@ -56,25 +56,25 @@ int main(){
 		//display menu 1.peek 2.push 3.pop 4.exit
 		printf("\nEnter\n1.Peek\n2.Push\n3.Pop\n4.Exit\n");
 		printf("Enter your choice: ");
-		scanf("%d",&choice);	//take input in choice variable
+		scanf("%d",&choice);	
 		switch(choice){
 			case 1:
-				e=peek();//call peek function
+				e=peek();
 				printf("\nElement at the top of stack is : %d",e);
 				break;
 			case 2:
 				printf("\nEnter the elment to be inserted: ");
 				scanf("%d",&e);
-				push(e);//call push function
+				push(e);
 				break;
 			case 3:
-				pop();//call pop function
+				pop();
 				break;
 			case 4:
-				exit(0);//call exit(0) function or return 0
+				exit(0);
 				break;
 			default:
-				printf("\nInvalid Choice");//invalid choice
+				printf("\nInvalid Chice");
 				break;				
 		}
 	}while(1);
