@@ -1,13 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define MAX_SIZE 20
+#include<math.h>
+#define MAX_SIZE 5
 
 int queue[MAX_SIZE],front=-1,rear=-1;
 
 int isFull()
 {
-	
-	return rear==MAX_SIZE-1;
+	return (((abs(front-rear)%(MAX_SIZE-1)==1)||(abs(rear-front)%(MAX_SIZE-1)==0))&&(front!=-1&&rear!=-1));
 	
 }
 
@@ -26,13 +26,14 @@ int display()
 
 void insertQueue(int d)
 {
+	
 	if(!isFull())
 	{
 		if(isEmpty())
 		{
 		front++;
 	    }
-	rear++;
+	rear=(rear++)%MAX_SIZE;
 	queue[rear]=d;
 	printf("YOUR ELEMENT IS SUCESSFULLY INSERTED=%d",queue[rear]);
     }	
@@ -54,13 +55,14 @@ void deleteQueue()
 	 }
 	else
 	{
-	front++;
-    }
+	front=(front++)%MAX_SIZE;
+	}
 	printf("THE ELEMENT DELETED IS %d",d);
     
     
 }	
-	
+
+
 
 
 int main(){
@@ -99,3 +101,4 @@ int main(){
 	}while(1);
 	return 0;
 }
+
