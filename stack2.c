@@ -4,24 +4,28 @@
 
 int stack[MAX_SIZE],top=-1;
 
-int isFull(){
+int isFull()
+{
 	//returns 1 if stack is full else returns -1
 	return top==MAX_SIZE-1;
 	
 }
 
-int isEmpty(){
+int isEmpty()
+{
 //returns 1 if stack is empty else returns -1
 	return top==-1;
 	
 }
 
-int peek(){
+int peek()
+{
 //return element at the top of stack
 	return stack[top];
 }
 
-void push(int e){
+void push(int e)
+{
 //inserts an element into stack
 	if(!isFull())
 	{
@@ -35,7 +39,8 @@ void push(int e){
 	}
 }
 
-void pop(){
+void pop()
+{
 
 	int d;
 	if(!isEmpty())
@@ -49,7 +54,8 @@ void pop(){
 	}
 }
 
-int main(){
+int main()
+{
 	int choice,e;
 	do
 	{

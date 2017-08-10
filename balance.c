@@ -87,7 +87,7 @@ void checkcontinuity (char exp[])
 	    if(s.top==-1)
 	       printf("EXPRESSION VALID");
 	    else
-	    {
+	    {s
 	      printf("Invalid Expression");
 	      return;
 	     }
@@ -96,9 +96,9 @@ void checkcontinuity (char exp[])
 int main()
 {
 	char exp[30];
-	printf("ENTER YOUR EXPRESSION CONTAINIG ONLY BRACKETS:\n");
+	printf("ENTER YOUR EXPRESSION CONTAINIG PARENTHESIS:\n");
 	scanf("%s",exp);
-	checkcontinuity(exp);
+	checkbalance(exp);
 	return 0;
 }
 	
