@@ -1,3 +1,7 @@
+/*Description: Infix to postfix conversion
+ * Learner:Shaikh Safiya naaz Abdul Hakeem.
+ */
+
 #include<stdio.h>
 #include<ctype.h> //for isaplha() function
 

@@ -1,3 +1,6 @@
+/*Description: Check continuity of different types of parenthesis using stack.
+ * Learner:Shaikh Safiya Naaz Abdul Hakeem. 
+ */
 #include<stdio.h>
 #include<ctype.h> 
 
@@ -87,7 +90,7 @@ void checkcontinuity (char exp[])
 	    if(s.top==-1)
 	       printf("EXPRESSION VALID");
 	    else
-	    {s
+	    {
 	      printf("Invalid Expression");
 	      return;
 	     }
@@ -98,7 +101,7 @@ int main()
 	char exp[30];
 	printf("ENTER YOUR EXPRESSION CONTAINIG PARENTHESIS:\n");
 	scanf("%s",exp);
-	checkbalance(exp);
+	checkcontinuity(exp);
 	return 0;
 }
 	

@@ -1,3 +1,6 @@
+/*Description: Evaluation of Postfix Expression
+ *learner:Shaikh Safiya Naaz ABDUL Hakeem.
+ */
 #include<stdio.h>
 #include<ctype.h>
 typedef struct stack

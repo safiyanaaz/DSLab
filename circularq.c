@@ -1,104 +1,91 @@
+/*Description:Array Implementation of circular queue
+ * Learner: Shaikh Safiya Naaz Abdul Hakeem.
+ * */
+ 
 #include<stdio.h>
 #include<stdlib.h>
-#include<math.h>
-#define MAX_SIZE 5
+#define MAX_SIZE 10
 
 int queue[MAX_SIZE],front=-1,rear=-1;
 
-int isFull()
-{
-	return (((abs(front-rear)%(MAX_SIZE-1)==1)||(abs(rear-front)%(MAX_SIZE-1)==0))&&(front!=-1&&rear!=-1));
-	
+int isFull(){
+	return ((rear==MAX_SIZE-1 && front==0)||(rear+1==front));	
 }
 
-int isEmpty()
-{
-
-	return rear==-1 && front==-1;
-	
+int isEmpty(){
+	return front==-1&&rear==-1;	
 }
 
-int display()
-{
-
-	return queue[front];
-}
-
-void insertQueue(int d)
-{
-	
-	if(!isFull())
-	{
-		if(isEmpty())
-		{
-		front++;
-	    }
-	rear=(rear++)%MAX_SIZE;
-	queue[rear]=d;
-	printf("YOUR ELEMENT IS SUCESSFULLY INSERTED=%d",queue[rear]);
-    }	
-	else
-    printf("Queue is full element cannot be inserted");	
-}
-
-
-void deleteQueue()
-{
-	int d;
-	if(!isEmpty())
-	{
-	d=queue[front];
-	  if(front==rear)
-	  {
-		  front=rear=-1;
-	   }
-	 }
-	else
-	{
-	front=(front++)%MAX_SIZE;
+void display(){
+	int i=front;
+	if(!isEmpty()){
+		while(i!=rear){
+			printf("%d\t",queue[i]);
+			i=(i+1)%MAX_SIZE;
+		}
+		printf("%d\t",queue[i]);
 	}
-	printf("THE ELEMENT DELETED IS %d",d);
-    
-    
-}	
+	else{
+		printf("\nQueue is Empty.");
+	}	
+			
+}
 
+void insertqueue(int e){
+	if(!isFull()){
+		rear=(rear+1)%(MAX_SIZE);
+		queue[rear]=e;
+		if(front==-1)
+			front++;
+		printf("\nElement %d is successfully Inserted",e);
+		printf("\n%d-%d",front,rear);
+	}
+	else
+		printf("\nQueue is Full Element cannot be inserted.");	
+}
 
-
+void deletequeue(){
+	int d;
+	if(!isEmpty()){
+		d=queue[front];
+		if(front==rear)
+			front=rear=-1;
+		else
+			front=(front+1)%(MAX_SIZE);
+		printf("\nThe element deleted is %d",d);
+		printf("\n%d-%d",front,rear);	
+	}
+	else
+		printf("\nQueue is Empty");	
+}
 
 int main(){
 	int choice,e;
 	do
 	{
-		
-		printf("\nEnter\n1.DISPLAY\n2.Insert\n3.delete\n4.Exit\n");
+		printf("\n\nEnter\n1.Display\n2.Insert\n3.Delete\n4.Exit\n");
 		printf("Enter your choice: ");
-		scanf("%d",&choice);	
+		scanf("%d",&choice);	//take input in choice variable
 		switch(choice){
 			case 1:
-			    if(isEmpty())
-			    printf("queue is empty");
-			    else
-			    {
-				e=display();
-				printf("\nElement at the front of queue is : %d",e);
-			    }
+				printf("\nElements of queue are");
+				display();
 				break;
 			case 2:
 				printf("\nEnter the elment to be inserted: ");
 				scanf("%d",&e);
-				insertQueue(e);
+				insertqueue(e);//call insertqueue function
 				break;
 			case 3:
-				deleteQueue();
+				deletequeue();//call deletequeue function
 				break;
 			case 4:
-				exit(0);
+				exit(0);//call exit(0) function or return 0
 				break;
 			default:
-				printf("\nInvalid Choice");
+				printf("\nInvalid Choice");//invalid choice
 				break;				
 		}
 	}while(1);
 	return 0;
 }
-
