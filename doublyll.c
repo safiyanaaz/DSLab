@@ -1,4 +1,4 @@
-/*Description: Implementation of Singly Linked list
+/*Description: Implementation of Doubly Linked list
  * Learner:Shaikh Safiya Naaz Abdul Hakeem
  */
 #include<stdio.h>
@@ -29,10 +29,14 @@ void insbeg(node **q,int no)
 	temp=*q;
 	ptr=(node*)malloc(sizeof(node));
 	ptr->data=no;
+	ptr->prev=NULL;
 	if(temp==NULL)
 		ptr->next=NULL;
 	else
+	{
 		ptr->next=temp;
+		temp->prev=ptr;
+	}		
 	*q=ptr;
 	printf("\nELEMENTS OF LINKLIST AFTER INSERTION\n");
 	print(*q);
@@ -46,12 +50,16 @@ void insend(node **q,int no)
 	ptr->next=NULL;
 	temp=*q;
 	if(temp==NULL)
+	{
 		*q=ptr;
+		ptr->prev=NULL;
+	}
 	else
 	{
 		while(temp->next!=NULL)
 			temp=temp->next;
 		temp->next=ptr;
+		ptr->prev=temp;
 	}
 	printf("\nELEMENTS OF LINKLIST AFTER INSERTION\n");
 	print(*q);
@@ -59,7 +67,7 @@ void insend(node **q,int no)
 void insafter(node *q,int no)
 {
 	int loc,k;
-	node *temp,*ptr,*old;
+	node *temp,*ptr;
 	temp=q;
 	ptr=(node*)malloc(sizeof(node*));
 	ptr->data=no;
@@ -71,19 +79,21 @@ void insafter(node *q,int no)
 			printf("\nELEMENTS ARE LESS THAN PROVIDED LOCATION\n");
 		else
 		{
-			old=temp;
+			//old=temp;
 			temp=temp->next;
 		}
 	}
+	temp->prev->next=ptr;  //temp->prev=old node
+	ptr->prev=temp->prev;
 	ptr->next=temp;
-	old->next=ptr;
+	temp->prev=ptr;
 	printf("\nELEMENTS OF LINKLIST AFTER INSERTION\n");
 	print(q);
 }
 void del(node **q,int no)
 {
 	int f=0;
-	node *old,*temp;
+	node *temp;
 	temp=*q;
 	
 	while(temp!=NULL)
@@ -92,15 +102,22 @@ void del(node **q,int no)
 		{
 			f=1;
 			if(temp==*q)
+			{
 				*q=temp->next;
+				if(temp->next!=NULL)
+				temp->next->prev=NULL;
+			}
 			else	
-				old->next=temp->next;
-			free(temp);
+			{
+			    temp->prev->next=temp->next;
+			    if(temp->next!=NULL)
+			    temp->next->prev=temp->prev;
+			}
+			 free(temp);  //node deleted
 			break;
 		}
 		else
 		{
-			old=temp;
 			temp=temp->next;
 		}
 	}
@@ -126,6 +143,7 @@ int main()
 	printf("\nENTER NODE NUMBER 1: ");
 	start=(node*)malloc(sizeof(node));
 	scanf("%d",&start->data);
+	start->prev=NULL;
 	temp=start;
 	for(i=1;i<n;i++)
 	{
@@ -133,6 +151,7 @@ int main()
 		printf("\nENTER NODE NUMBER %d: ",i+1);
 		scanf("%d",&ptr->data);
 		temp->next=ptr;
+		ptr->prev=temp;
 		temp=ptr;
 	}
 	temp->next=NULL;
