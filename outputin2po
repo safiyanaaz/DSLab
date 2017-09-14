@@ -1,0 +1,12 @@
+/*ENTER INFIX EXPRESSION
+a+b-c*d-e
+stack is empty
+
+
+POSTFIX EXPRESSION
+ab+cd*-e-
+
+------------------
+(program exited with code: 0)
+Press return to continue
+

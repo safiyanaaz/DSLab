@@ -1,0 +1,65 @@
+/*Enter
+1.DISPLAY
+2.Insert
+3.delete
+4.Exit
+Enter your choice: 2
+
+Enter the elment to be inserted: 10
+YOUR ELEMENT IS SUCESSFULLY INSERTED=10
+Enter
+1.DISPLAY
+2.Insert
+3.delete
+4.Exit
+Enter your choice: 2
+
+Enter the elment to be inserted: 20
+YOUR ELEMENT IS SUCESSFULLY INSERTED=20
+Enter
+1.DISPLAY
+2.Insert
+3.delete
+4.Exit
+Enter your choice: 2
+
+Enter the elment to be inserted: 30
+YOUR ELEMENT IS SUCESSFULLY INSERTED=30
+Enter
+1.DISPLAY
+2.Insert
+3.delete
+4.Exit
+Enter your choice: 3
+THE ELEMENT DELETED IS 10
+Enter
+1.DISPLAY
+2.Insert
+3.delete
+4.Exit
+Enter your choice: 2
+
+Enter the elment to be inserted: 50
+YOUR ELEMENT IS SUCESSFULLY INSERTED=50
+Enter
+1.DISPLAY
+2.Insert
+3.delete
+4.Exit
+Enter your choice: 1
+
+Element at the front of queue is : 10
+Enter
+1.DISPLAY
+2.Insert
+3.delete
+4.Exit
+Enter your choice: 
+4
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+*/
