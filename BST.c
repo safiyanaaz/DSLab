@@ -1,5 +1,6 @@
   //Program to implement Binary Search Tree.
   //Learner:SHAIKH SAFIYA NAAZ ABDUL HAKEEM.
+  //Created on:21 SEPTEMBER.
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -18,30 +19,94 @@ void traverseinorder(node *q)
 	printf("%d\t",q->data);
 	traverseinorder(q->right);
     }
- node* delete (node *q,int num)
+ }
+ void searchnode(node **x,node **root,node **parent,int num,int *f)
+ {
+	 node*temp;
+	 temp=root;
+	 if(temp==NULL)
+	    return;
+
+	    while(temp!=NULL)
+	    {
+			 if(temp->data==num)
+	  {
+		  *f=1;
+		  *x=temp;
+		  return;
+	    }
+	       *parent=temp;
+			if(num>temp->data)
+			   temp=temp->right;
+			else
+			   temp=temp->left;
+		 }
+
+ }
+ void delete (node **r,int num)
 {
-	node *temp;
-	temp=q;
-	if(temp==NULL)
-	{
-		printf("\nthe given number is not found"):
+	node *temp,*parent,*x,*xsucc;
+	int f=0;
+	parent=NULL;x=NULL,xsucc=NULL;
+    temp=*r;
+    searchnode(&x,temp,&parent,num,&f);
+    if(f==0)
+    {
+		printf("\nTHE ELEMENT %D IS NOT FOUND",num);
 		return;
 	}
-	else
+	//x has no child
+	if(x->left==NULL && x->right==NULL)
 	{
-	if(temp->data==num)
+		if(x->data > parent->data)
+		     parent->right==NULL;
+		 else
+		     parent->left==NULL;
+		  free(x);
+	 }
+	 //x has left child
+	 else if(x->left!=NULL && x->right==NULL)
 	{
-		if(temp->left==NULL&&temp->right==NULL)
-		free(temp);
-		
-		return;
+		if(x->data > parent->data)
+		     parent->right==x->left;
+		 else
+		     parent->left==x->left;
+    }
+    //x has right child
+    else if(x->left==NULL && x->right!=NULL)
+	{
+		if(x->data > parent->data)
+		     parent->right==x->right;
+		 else
+		     parent->left==x->right;
+	}
+    //x has two children
+    else if (x->left!=NULL && x->right!=NULL)
+    {
+		parent=x;
+		xsucc=x->right;
+		while(xsucc->left!=NULL)
+		{
+			parent=xsucc;
+		  xsucc=xsucc->left;
+	    }
+	    if(xsucc->data > parent->data)
+	      parent->right=NULL;
+	    else
+	     parent->left==NULL;
+		  x->data=xsucc->data;
+		  parent->left==NULL;
+		  x=xsucc;
+		  
+    }
+    free(x);
 	}
 		
 
  
- int search (node *r,int key)
+ int search (node *q,int key)
 {
-	if (r==NULL)
+	if (q==NULL)
 	return -1;
 	else
 	{
@@ -51,61 +116,41 @@ void traverseinorder(node *q)
 			{
 				if (key>q->data)
 			{
-				search(r->right,key);
+				search(q->right,key);
 			}
 			else
 			{
-				search(r->left,key);
+				search(q->left,key);
 			}
 		}
   }
  }
 			
 
-node* insert (node *r,int num)
+void insert ( node **r,int num)
 {
 	node *temp,*ptr;
-	temp=r; 
+	temp=*r; 
 	if (temp==NULL)
-	r=ptr;
-	else
 	{
-		if(num>temp->data)
-		{
-			if(temp->right==NULL)
-			{
-				ptr=(node*)malloc(sizeof(node));
+		ptr=(node*)malloc(sizeof(node));
 	             ptr->data=num;
 	             ptr->left=NULL;
             	ptr->right=NULL;
 				temp->right=ptr;
-				return;
-			}	
+	            *r=ptr;
+	 }
+	else
+	{
+		if(num>temp->data)
+		{
+			insert(&temp->right,num);
+		}
 			else
 			{
-				temp=temp->right;
-				insert(temp,num);
+				insert(&temp->left,num);
 				}
 			}
-			else
-			{
-			if(temp->left==NULL)
-			{
-				ptr=(node*)malloc(sizeof(node));
-	             ptr->data=num;
-	             ptr->left=NULL;
-            	ptr->right=NULL;
-				temp->left=ptr;
-				return;
-			}	
-			else
-			{
-				temp=temp->left;
-				insert(temp,num);
-				}
-			}
-	}
-	return r;
 }
 
 
@@ -114,14 +159,21 @@ int main()
 {
 	node *root;
 	root=NULL;
-	insert(root,5);
-	insert(root,6);
-	insert (root,7);
+	insert(&root,20);
+	insert(&root,15);
+	insert (&root,13);
+	insert(&root,17);
+	insert(&root,16);
+	insert (&root,19);
+	insert(&root,18);
+	insert(&root,25);
 	traverseinorder(root);
 	if(search(root,7)==1)
 		printf("\n%d is present in thetree",7);
 		else
 		printf("number not found");
+	delete(&root,19);
+	traverseinorder(root);
 	return 0;
 }
 	
