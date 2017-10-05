@@ -1,16 +1,13 @@
-  //Program to implement Binary Search Tree.
-  //Learner:SHAIKH SAFIYA NAAZ ABDUL HAKEEM.
-  //Created on:21 SEPTEMBER.
-
+  /*Program to implement Binary Search Tree.
+  *Learner:SHAIKH SAFIYA NAAZ ABDUL HAKEEM.
+  * Created on:21 SEPTEMBER.*/
 #include<stdio.h>
 #include<stdlib.h>
-
 typedef struct bst
 {
 	int data;
 	struct bst *left,*right;
 }node;
-
 void traverseinorder(node *q)
 {
 	if(q!=NULL)
@@ -20,7 +17,7 @@ void traverseinorder(node *q)
 	traverseinorder(q->right);
     }
  }
- void searchnode(node **x,node **root,node **parent,int num,int *f)
+void searchnode(node **x,node *root,node **parent,int num,int *f)
  {
 	 node*temp;
 	 temp=root;
@@ -52,33 +49,33 @@ void traverseinorder(node *q)
     searchnode(&x,temp,&parent,num,&f);
     if(f==0)
     {
-		printf("\nTHE ELEMENT %D IS NOT FOUND",num);
+		printf("\nTHE ELEMENT %d IS NOT FOUND",num);
 		return;
 	}
 	//x has no child
 	if(x->left==NULL && x->right==NULL)
 	{
 		if(x->data > parent->data)
-		     parent->right==NULL;
+		     parent->right=NULL;
 		 else
-		     parent->left==NULL;
+		     parent->left=NULL;
 		  free(x);
 	 }
 	 //x has left child
 	 else if(x->left!=NULL && x->right==NULL)
 	{
 		if(x->data > parent->data)
-		     parent->right==x->left;
+		     parent->right=x->left;
 		 else
-		     parent->left==x->left;
+		     parent->left=x->left;
     }
     //x has right child
     else if(x->left==NULL && x->right!=NULL)
 	{
 		if(x->data > parent->data)
-		     parent->right==x->right;
+		     parent->right=x->right;
 		 else
-		     parent->left==x->right;
+		     parent->left=x->right;
 	}
     //x has two children
     else if (x->left!=NULL && x->right!=NULL)
@@ -93,9 +90,9 @@ void traverseinorder(node *q)
 	    if(xsucc->data > parent->data)
 	      parent->right=NULL;
 	    else
-	     parent->left==NULL;
+	     parent->left=NULL;
 		  x->data=xsucc->data;
-		  parent->left==NULL;
+		  parent->left=NULL;
 		  x=xsucc;
 		  
     }
@@ -116,11 +113,11 @@ void traverseinorder(node *q)
 			{
 				if (key>q->data)
 			{
-				search(q->right,key);
+				return search(q->right,key);
 			}
 			else
 			{
-				search(q->left,key);
+				return search(q->left,key);
 			}
 		}
   }
@@ -137,7 +134,6 @@ void insert ( node **r,int num)
 	             ptr->data=num;
 	             ptr->left=NULL;
             	ptr->right=NULL;
-				temp->right=ptr;
 	            *r=ptr;
 	 }
 	else
