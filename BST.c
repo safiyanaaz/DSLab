@@ -1,4 +1,4 @@
-  /*Program to implement Binary Search Tree.
+  /*Program to implement Binary Search Tree..
   *Learner:SHAIKH SAFIYA NAAZ ABDUL HAKEEM.
   * Created on:21 SEPTEMBER.*/
 #include<stdio.h>
